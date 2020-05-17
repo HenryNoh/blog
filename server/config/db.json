@@ -1,0 +1,10 @@
+{
+    "development" : {
+        "username": "admin",
+        "password": "11111111",
+        "database": "blog",
+        "host": "blog-1.cctfvrol48so.ap-northeast-2.rds.amazonaws.com",
+        "port": 3306,
+        "dialect": "mysql"
+    }
+}
