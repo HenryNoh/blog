@@ -1,7 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define(
-      'class',
-      {
+    return sequelize.define('class',{
        className: {
         type: DataTypes.STRING(50),
         allowNull : true
@@ -11,5 +9,5 @@ module.exports = (sequelize, DataTypes) => {
         charset: 'utf8',
         collate: 'utf8_general_ci',
         timestamps: false,
-      }
-  )};
+      })
+};
