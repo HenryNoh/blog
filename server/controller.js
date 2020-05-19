@@ -1,5 +1,7 @@
 const path = require('path');
 const model = require('./model');
+const hashing = require('./config/hashing.js')
+const {salt}  = require(path.join(__dirname, 'config', 'db.json'))
 
 const AWS = require('aws-sdk');
 AWS.config.loadFromPath(
@@ -33,5 +35,23 @@ AWS.config.loadFromPath(
                 return res.send(true)
             })
         },
+        sendPw : (req, res) => {
+            const body = req.body;
+            const hash = hashing.enc(body.id, body.password, salt)
+
+            model.api.searchInfo(body, hash, result => {
+                var obj = {};
+                if(result[0]) {
+                    obj['suc'] = true;
+                    obj['msg'] = '로그인 성공';
+    
+                  } else {
+                    obj['suc'] = false;
+                    obj['msg'] = '로그인 실패';
+                  }
+                  
+                  res.send(obj);
+              })
+          },
     }
 }

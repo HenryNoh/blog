@@ -7,4 +7,6 @@ router.post('/add/data',controller.api.addData);
 router.post('/modify/data',controller.api.modifyData);
 router.post('/delete/data',controller.api.deleteData);
 
+router.post('/send/pw', controller.api.sendPw);
+
 module.exports = router;

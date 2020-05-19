@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import { Route, Link, Switch } from 'react-router-dom';
+
+import { Home, Test, Head } from './inc'
 
 class App extends Component {
   constructor(props) {
@@ -89,51 +92,66 @@ class App extends Component {
   }
 
   render() {
-    const { list } = this.state;
-
     return(
       <div className='App'>
-        <h3> Welcome to <u> Henry </u> Blog! </h3>
-        <h5> this is test page </h5>
-
-        <br />
-        <form method='POST' onSubmit={this._addData}>
-          <input type='text' maxLength='10' onChange={(e) => this._nameUpdate(e)}/>
-          <input type='submit' value='Add' />
-        </form>
-
-        <br /> <br />
-          <div style={{ height : '250px', overflow : 'auto' }}>
-            <h4 style={{ color : '#ababab'}}> Teachers List </h4>
-
-              <div style={{ border : 'solid 1px black', width : '50%', marginLeft : '25%', textAlign : 'left' }}>
-                <div style={{ display : 'grid', gridTemplateColumns : '32% 35% 30%', textAlign : 'center' }}>
-                  <div> Number </div>
-                  <div> Name </div>
-                  <div> Other </div>
-                </div>
-              </div>
-
-            {list.length !== 0
-              ? list.map( (el, key) => {
-                return(
-                  <div key={key} style={{ display : 'grid', lineHeight : '40px', gridTemplateColumns : '32% 35% 20% 0%', width : '50%', marginLeft : '25%'}}>
-                    <div> {el.id} </div>
-                    <div> {el.name} </div>
-                    <div
-                      style={{ color : '#ababab' }} 
-                      onClick={() => this._modify(el)}> Modify </div>
-                    <div
-                      style={{ color : '#ababab' }} 
-                      onClick={() => this._delete(el)}> Delete </div>
-                  </div>
-                )
-              })
-            
-              : null}
-          </div>
+        <Head/>
+          <Route path="/" component={Home} exact />
+          <Switch>
+            <Route path="/test/:data" component={Test} />
+            <Route path="/test" component={Test} />
+          </Switch>
+        <ul>
+          <li> <Link to='/'> Home </Link> </li>
+          <li> <Link to='/test'> Test </Link> </li>
+        </ul>
       </div>
+
     )
+    // const { list } = this.state;
+
+    // return(
+    //   <div className='App'>
+    //     <h3> Welcome to <u> Henry </u> Blog! </h3>
+    //     <h5> this is test page </h5>
+
+    //     <br />
+    //     <form method='POST' onSubmit={this._addData}>
+    //       <input type='text' maxLength='10' onChange={(e) => this._nameUpdate(e)}/>
+    //       <input type='submit' value='Add' />
+    //     </form>
+
+    //     <br /> <br />
+    //       <div style={{ height : '250px', overflow : 'auto' }}>
+    //         <h4 style={{ color : '#ababab'}}> Teachers List </h4>
+
+    //           <div style={{ border : 'solid 1px black', width : '50%', marginLeft : '25%', textAlign : 'left' }}>
+    //             <div style={{ display : 'grid', gridTemplateColumns : '32% 35% 30%', textAlign : 'center' }}>
+    //               <div> Number </div>
+    //               <div> Name </div>
+    //               <div> Other </div>
+    //             </div>
+    //           </div>
+
+    //         {list.length !== 0
+    //           ? list.map( (el, key) => {
+    //             return(
+    //               <div key={key} style={{ display : 'grid', lineHeight : '40px', gridTemplateColumns : '32% 35% 20% 0%', width : '50%', marginLeft : '25%'}}>
+    //                 <div> {el.id} </div>
+    //                 <div> {el.name} </div>
+    //                 <div
+    //                   style={{ color : '#ababab' }} 
+    //                   onClick={() => this._modify(el)}> Modify </div>
+    //                 <div
+    //                   style={{ color : '#ababab' }} 
+    //                   onClick={() => this._delete(el)}> Delete </div>
+    //               </div>
+    //             )
+    //           })
+            
+    //           : null}
+    //       </div>
+    //   </div>
+    // )
   }
 }
 

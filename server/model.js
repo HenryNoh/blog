@@ -6,6 +6,11 @@ const {
   } = require('./models');
 sequelize.query('SET NAMES utf8;');
 
+const {
+    Admin
+  } = require('./models');
+sequelize.query('SET NAMES utf8;');
+
 module.exports = {
     api : {
         getData : callback => {
@@ -31,6 +36,17 @@ module.exports = {
             })
             .then( callback(true))
             .catch( err => { throw err })
-        }
+        },
+        searchInfo : (body, hash, callback) => {
+            Admin.findAll({
+                where : { [Op.and]: [{ user_id : body.id, password : hash }] }
+            })
+            .then(data =>{
+                callback(data)
+            })
+            .catch(err => {
+                throw (err);
+            })
+        },
     }
 }

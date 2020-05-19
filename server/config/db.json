@@ -6,5 +6,7 @@
         "host": "blog-1.cctfvrol48so.ap-northeast-2.rds.amazonaws.com",
         "port": 3306,
         "dialect": "mysql"
-    }
+    },
+
+    "salt" : "fjdkfjkdhvaleiorjeioq31275nkdsu9324hjfjds923"
 }
