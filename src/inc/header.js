@@ -92,7 +92,12 @@ class header extends Component {
     console.log('아이디 : ' + this.state.id + ', 비밀번호 : ' + this.state.password);
     return (
         <div class='header_grid'>
-            <div> </div>
+            <div>
+            {this.state.login 
+              ? <h5> <Link to='/write'> 포스트 작성 </Link> </h5>
+              : null
+            }
+            </div>
             <div className='acenter'>
                 <Route path='/'/>
                 <Link className='link_tit' to='/'> <h3> Sejun's Blog </h3> </Link>

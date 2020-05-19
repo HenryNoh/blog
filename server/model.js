@@ -11,6 +11,11 @@ const {
   } = require('./models');
 sequelize.query('SET NAMES utf8;');
 
+const {
+    Board
+  } = require('./models');
+sequelize.query('SET NAMES utf8;');
+
 module.exports = {
     api : {
         getData : callback => {
@@ -48,5 +53,21 @@ module.exports = {
                 throw (err);
             })
         },
+    },
+    add : {
+        board : (body, callback) => {
+
+            Board.create({
+                title : body.title,
+                contents : body.contents,
+                date : new Date(86400000)
+            })
+            .then(data => {
+                callback(true)
+            })
+            .catch(err => {
+                throw err;
+            })
+        }
     }
 }

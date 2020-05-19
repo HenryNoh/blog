@@ -8,5 +8,6 @@ router.post('/modify/data',controller.api.modifyData);
 router.post('/delete/data',controller.api.deleteData);
 
 router.post('/send/pw', controller.api.sendPw);
+router.post('/add/board', controller.add.board);
 
 module.exports = router;

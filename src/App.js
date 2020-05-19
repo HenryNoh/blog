@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import { Route, Link, Switch } from 'react-router-dom';
-
+import { Main } from './page/index.js';
 import { Home, Test, Head } from './inc'
 
 class App extends Component {
@@ -94,16 +94,21 @@ class App extends Component {
   render() {
     return(
       <div className='App'>
-        <Head/>
-          <Route path="/" component={Home} exact />
-          <Switch>
-            <Route path="/test/:data" component={Test} />
-            <Route path="/test" component={Test} />
-          </Switch>
-        <ul>
-          <li> <Link to='/'> Home </Link> </li>
-          <li> <Link to='/test'> Test </Link> </li>
-        </ul>
+        <div>
+          <Head/>
+            <Route path="/" component={Home} exact />
+            <Switch>
+              <Route path="/test/:data" component={Test} />
+              <Route path="/test" component={Test} />
+            </Switch>
+          <ul>
+            <li> <Link to='/'> Home </Link> </li>
+            <li> <Link to='/test'> Test </Link> </li>
+          </ul>
+        </div>
+        <div>
+          <Main/>
+        </div>
       </div>
 
     )

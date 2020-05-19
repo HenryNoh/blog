@@ -52,6 +52,17 @@ AWS.config.loadFromPath(
                   
                   res.send(obj);
               })
-          },
-    }
+        },
+    },
+    add : {
+        board : (req, res) => {
+            const body = req.body;
+
+            model.add.board(body, result => {
+            if(result) {
+                res.send(true);
+            }
+            })
+        },
+    },
 }

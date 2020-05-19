@@ -36,6 +36,7 @@ let sequelize = new Sequelize(
     db.Teacher = require('./teacher')(sequelize, Sequelize);
     db.Class = require('./class')(sequelize, Sequelize);
     db.Admin = require('./admin')(sequelize, Sequelize);
+    db.Board = require('./board')(sequelize, Sequelize);
 
 db.secret = '(9*)5$&!3%^0%^@@2$1!#5@2!4';
 module.exports = db;
