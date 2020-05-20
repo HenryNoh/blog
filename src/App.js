@@ -96,7 +96,7 @@ class App extends Component {
       <div className='App'>
         <div>
           <Head/>
-            <Route path="/" component={Home} exact />
+            {/* <Route path="/" component={Home} exact />
             <Switch>
               <Route path="/test/:data" component={Test} />
               <Route path="/test" component={Test} />
@@ -104,7 +104,7 @@ class App extends Component {
           <ul>
             <li> <Link to='/'> Home </Link> </li>
             <li> <Link to='/test'> Test </Link> </li>
-          </ul>
+          </ul> */}
         </div>
         <div>
           <Main/>

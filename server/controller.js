@@ -59,10 +59,27 @@ AWS.config.loadFromPath(
             const body = req.body;
 
             model.add.board(body, result => {
-            if(result) {
-                res.send(true);
-            }
+                if(result) {
+                    res.send(true);
+                }
             })
         },
+    },
+    get : {
+        board : (req, res) => {
+  
+            model.get.board(result => {
+                if(result) {
+                    res.send(result);
+                }
+            })
+        },
+        board_cnt : (req, res) => {
+
+            model.get.board_cnt(cnt => {
+              const result = { cnt : cnt }
+              res.send(result)
+            })
+          }
     },
 }

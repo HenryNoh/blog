@@ -100,40 +100,36 @@ class header extends Component {
             </div>
             <div className='acenter'>
                 <Route path='/'/>
-                <Link className='link_tit' to='/'> <h3> Sejun's Blog </h3> </Link>
+                <Link className='link_tit' to='/'> <h3> Henry's Blog </h3> </Link>
             </div>
 
             <div className='acenter'> 
             {this.state.login ? <h5 className='btn_cursor' onClick={() => this._logout()}> 관리자 로그아웃 </h5>
                               : <h5 className='btn_cursor' onClick={() => this._openModal()}> 관리자 로그인 </h5>
 }
-            <Modal visible={this.state.visible} 
-                       width="400" height="360"
-                       effect="fadeInDown" 
-                       onClickAway={() => this._closeModal()}
-                >
-                  <div>
-                    <h4 className='acenter login_tit'> 관리자 로그인 </h4>
-                    <form>
-                    <div className='login_div'>
-                      <div className='login_input_div'>
-                        <p> 관리자 ID </p>
-                        <input type='text' name='id' onChange={()=>this._changeID()}/>
-                      </div>
-
-                      <div className='login_input_div' style={{ 'marginTop' : '40px'}}>
-                        <p> 관리자 Password </p>
-                        <input type='password' name='password' onChange={() => this._changePW()}/>
-                      </div>
-
-                      <div className='submit_div'>
-                        <div> <input type='button' value='로그인' onClick={() => this._selectUserData()}/> </div>
-                        <div> <input type='button' value='취소' onClick={() => this._closeModal()}/> </div>
-                      </div>
+            <Modal visible={this.state.visible} width="400" height="360" effect="fadeInDown" onClickAway={() => this._closeModal()}>
+              <div>
+                <h4 className='acenter login_tit'> 관리자 로그인 </h4>
+                <form>
+                  <div className='login_div'>
+                    <div className='login_input_div'>
+                      <p> 관리자 ID </p>
+                      <input type='text' name='id' onChange={()=>this._changeID()}/>
                     </div>
-                    </form>
+
+                    <div className='login_input_div' style={{ 'marginTop' : '40px'}}>
+                      <p> 관리자 Password </p>
+                      <input type='password' name='password' onChange={() => this._changePW()}/>
+                    </div>
+
+                    <div className='submit_div'>
+                      <div> <input type='button' value='로그인' onClick={() => this._selectUserData()}/> </div>
+                      <div> <input type='button' value='취소' onClick={() => this._closeModal()}/> </div>
+                    </div>
                   </div>
-                </Modal>
+                </form>
+              </div>
+            </Modal>
             </div>
         </div>
     );

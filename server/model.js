@@ -69,5 +69,22 @@ module.exports = {
                 throw err;
             })
         }
+    },
+    get : {
+        board : (callback) => {
+            Board.findAll()
+            .then(data => {
+                callback(data)
+            })
+            .catch(err => {
+                throw err;
+            })
+        },
+        board_cnt : (callback) => {
+            Board.count()
+            .then(result => {
+              callback(result);
+            })
+        }
     }
 }

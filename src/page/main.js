@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
-import { Home, Write } from './index.js'; 
+import { List, Write } from './index.js'; 
 import { Right_Write } from './right/index.js'; 
 import './main.css';
 
@@ -14,11 +14,10 @@ class main extends Component {
     return (
         <div className='Mains'>
         <div id='Mains-left'>
-          <h3> Left Side </h3>
         </div>
 
         <div>
-            <Route path='/' component={Home} exact/>
+            <Route path='/' component={List} exact/>
             <Route path='/write' component={Write} />
         </div>
 
