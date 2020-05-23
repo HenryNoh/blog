@@ -1,47 +1,14 @@
 const sequelize = require('./models').sequelize;
 
 const {
-    Teacher,
+    Admin,
+    Board,
     Sequelize: { Op }
-  } = require('./models');
-sequelize.query('SET NAMES utf8;');
-
-const {
-    Admin
-  } = require('./models');
-sequelize.query('SET NAMES utf8;');
-
-const {
-    Board
   } = require('./models');
 sequelize.query('SET NAMES utf8;');
 
 module.exports = {
     api : {
-        getData : callback => {
-            Teacher.findAll()
-            .then( result => {callback(result)} )
-            .catch( err => { throw err })
-        },
-        addData : (body,callback) => {
-            Teacher.create({name : body.data})
-            .then( result=>{callback(result)} )
-            .catch( err=>{throw err })
-        },
-        modifyData : (body,callback) => {
-            Teacher.update({ name : body.modify.name }, {
-                where : { id : body.modify.id }
-            })
-            .then( result => { callback(result) })
-            .catch( err => { throw err })
-        },
-        deleteData : (body,callback) => {
-            Teacher.destroy({
-                where : { id : body.delete.id }
-            })
-            .then( callback(true))
-            .catch( err => { throw err })
-        },
         searchInfo : (body, hash, callback) => {
             Admin.findAll({
                 where : { [Op.and]: [{ user_id : body.id, password : hash }] }
@@ -60,7 +27,7 @@ module.exports = {
             Board.create({
                 title : body.title,
                 contents : body.contents,
-                date : new Date(86400000)
+                date : new Date()
             })
             .then(data => {
                 callback(true)
@@ -71,8 +38,30 @@ module.exports = {
         }
     },
     get : {
-        board : (callback) => {
-            Board.findAll()
+        board : (body, callback) => {
+            let search = "%%";
+            if(body.search) {
+                search = '%' + body.search + '%';
+            }
+            Board.findAll({
+                where : {
+                    [Op.or] :[
+                        {
+                            title : {
+                                [Op.like] : search
+                            },
+                        },
+                        {
+                            contents : {
+                                [Op.like] : search
+                            }
+                        }
+                    ]
+                },
+                    limit : (body.page * body.limit),
+                    offset : (body.page - 1) * body.limit,
+                    order: sequelize.literal('board_id DESC')
+            })
             .then(data => {
                 callback(data)
             })
@@ -80,10 +69,41 @@ module.exports = {
                 throw err;
             })
         },
-        board_cnt : (callback) => {
-            Board.count()
+        board_cnt : (body, callback) => {
+            let search = "%%";
+
+            if(body.search) {
+                search = '%' + body.search + '%';
+            }
+            Board.count({
+                where : {
+                    [Op.or] :[
+                        {
+                            title : {
+                                [Op.like] : search
+                            },
+                        },
+                        {
+                            contents : {
+                                [Op.like] : search
+                            }
+                        }
+                    ]
+                }
+            })
             .then(result => {
               callback(result);
+            })
+        },
+        board_data : (body, callback) => {
+            Board.findAll({
+                where : { board_id : body.id }
+            })
+            .then(result => {
+                callback(result);
+            })
+            .catch(err => {
+                throw err;
             })
         }
     }

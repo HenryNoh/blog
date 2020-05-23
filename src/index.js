@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './nml.css';
+// import Normalize from 'react-normalize';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
@@ -8,7 +10,8 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      {/* <Normalize/> */}
+        <App />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

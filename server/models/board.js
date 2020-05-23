@@ -23,6 +23,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         allowNull : false
        },
+
+       img: {
+         type: DataTypes.STRING(45),
+         allowNull : true
+       },
       },
       {
         charset: 'utf8',

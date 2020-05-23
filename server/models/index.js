@@ -27,14 +27,11 @@ let sequelize = new Sequelize(
     db.sequelize
     .authenticate()
     .then(() => {
-        console.log('Connection has been established successfully.');
+        console.log('---------DB Connection has been established successfully.-----------');
     })
     .catch(err => {
         console.log('Unable to connect to the database: ', err);
     });
-
-    db.Teacher = require('./teacher')(sequelize, Sequelize);
-    db.Class = require('./class')(sequelize, Sequelize);
     db.Admin = require('./admin')(sequelize, Sequelize);
     db.Board = require('./board')(sequelize, Sequelize);
 

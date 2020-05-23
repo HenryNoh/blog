@@ -1,10 +1,7 @@
-.Mains {
+/* .Mains {
     display: grid;
     grid-template-columns: 19% 62% 19%;
 }
-
-#Mains-left { border-right: solid 1px #aabbaa; }
-#Mains-right { border-left: solid 1px #aabbaa; }
 
 .Write {
     padding: 20px;
@@ -39,38 +36,128 @@
 #post_submit {
     text-align: center;
     margin-top: 30px;
-}
+} */
 
-#post_submit button {
-    width: 120px;
-    padding: 5px;
-    border-radius: 5px;
-    border: solid 1px #ababab;
-    cursor: pointer;
-    background-color: white;
-}
+@media only screen and (max-width:760px){
+    .Mains {
+        position: relative;
+        z-index:1;
+        margin:8px;
+        margin-top:63px;
+        display: grid;
+        grid-template-columns: 0% 100% 0%;
+    }
+    .list_content{
+        max-height:113px;
+        padding:21px 15px 20px;
+        border-bottom: 1px solid black;
+    }
+    .thumbnail_post{
+        width:76px;
+        height:76px;
+        margin:8px 0px 8px 30px;
+        float:right;
+    }
+    .link_post{
+        max-height:80px;
+        display: block;
+        overflow:hidden;
+    }
+    .detail_info{
+        color:#1f640a;
+        font-size: 13px;
+        font-weight: 100;
+        margin-top:8px;
+    }
+    .tit_post{
+        font-size:18px;
+        display:block;
+        text-overflow: ellipsis;
+        overflow:hidden;
+        white-space:normal;
+    }
+    p.txt_post{
+        display:inline;
+        font-size:14px;
+        font-weight: 100;
+        line-height:19px;
+    }
+    .txt_post > p{
+        max-height:37px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    #Mains-left { border-right: solid 0px; }
+    #Mains-right { border-left: solid 0px; }
 
-.List {
-    padding: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
-    min-height: 500px;
-}
 
-.list_tit {
-    border-bottom: solid 1px #ababab;
-    color : #ababab;
-}
-
-.list_grid {
-    display: grid;
-    grid-template-columns: 70% 15% 15%;
-}
-
-.list_data {
-    line-height: 40px;
-}
-
-.acenter {
-    text-align: center;
+    #title{
+        width:100%;
+        margin-top:15px;
+        margin-bottom:15px;
+        padding-top:15px;
+        padding-bottom:15px;
+        border:none;
+        font-size:22px;
+        border-bottom: solid 1px black;
+        font-weight: bold;
+    }
+    #title:focus{outline:none;}
+/* ------------------------------------------------------------- */
+    .paging_div {
+        margin-top: 10px;
+        border-top: solid 1px #ababab;
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+        text-align: center;
+    }
+    
+    .paging_div div {
+        padding : 15px;
+        text-align: center;
+    }
+    
+    .page_num {
+        margin-right: 20px;
+        list-style: none;
+        display : inline-block;
+        cursor: pointer;
+    }
+    .search_input {
+        padding: 2px;
+        margin-right: 5px;
+        margin-top: 15px;
+        width: 50%;
+    }
+    
+    .serach_submit {
+        position: absolute;
+        margin-top: 14px;
+        cursor: pointer;
+    }
+    .date_div {
+        text-align: right;
+        font-size: 14px;
+        color: #ababab;
+        margin-bottom: 10px;
+        padding-right: 10px;
+    }
+    
+    .top_title #title_txt {
+        text-align: center;
+        border: none;
+        padding-bottom: 0px;
+        font-size:26px;
+        line-height: 31px;
+    }
+    
+    .top_title {
+        display:flex;
+        border-bottom: solid 1px #ababab;
+    }
+    
+    #content_txt > p {
+        font-size:17px;
+        font-weight: 100;
+    }
 }

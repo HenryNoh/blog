@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import '../App.css';
+import { Write } from '../page/index.js'
 import Modal from 'react-awesome-modal';
 import axios from 'axios';
 
@@ -8,7 +9,7 @@ class header extends Component {
     constructor(props){
         super(props);
         this.state={
-            visible:false,
+            visible: false,
             id: "",
             password: "",
             login : false,
@@ -89,14 +90,16 @@ class header extends Component {
       }
 
   render() {
-    console.log('아이디 : ' + this.state.id + ', 비밀번호 : ' + this.state.password);
     return (
-        <div class='header_grid'>
+        <div className='header_grid'>
             <div>
-            {this.state.login 
-              ? <h5> <Link to='/write'> 포스트 작성 </Link> </h5>
-              : null
-            }
+              {this.state.login 
+                ? <h5>
+                    <Route path='/write'/>
+                    <Link to = '/write'>Post</Link>
+                  </h5>
+                : null
+              }
             </div>
             <div className='acenter'>
                 <Route path='/'/>
@@ -104,21 +107,21 @@ class header extends Component {
             </div>
 
             <div className='acenter'> 
-            {this.state.login ? <h5 className='btn_cursor' onClick={() => this._logout()}> 관리자 로그아웃 </h5>
-                              : <h5 className='btn_cursor' onClick={() => this._openModal()}> 관리자 로그인 </h5>
+            {this.state.login ? <h5 className='btn_cursor' onClick={() => this._logout()}> Log out </h5>
+                              : <h5 className='btn_cursor' onClick={() => this._openModal()}> Log in </h5>
 }
             <Modal visible={this.state.visible} width="400" height="360" effect="fadeInDown" onClickAway={() => this._closeModal()}>
               <div>
-                <h4 className='acenter login_tit'> 관리자 로그인 </h4>
+                <h4 className='acenter login_tit'> Log in </h4>
                 <form>
                   <div className='login_div'>
                     <div className='login_input_div'>
-                      <p> 관리자 ID </p>
+                      <p> ID </p>
                       <input type='text' name='id' onChange={()=>this._changeID()}/>
                     </div>
 
                     <div className='login_input_div' style={{ 'marginTop' : '40px'}}>
-                      <p> 관리자 Password </p>
+                      <p> Password </p>
                       <input type='password' name='password' onChange={() => this._changePW()}/>
                     </div>
 

@@ -12,33 +12,9 @@ AWS.config.loadFromPath(
   module.exports = {
     needs: () => upload,
     api : {
-        getData : (req,res) =>{
-            model.api.getData(data => {
-                return res.send(data)
-            })
-        },
-        addData : (req,res) =>{
-            let body = req.body
-            model.api.addData(body, data => {
-                return res.send(true)
-            })
-        },
-        modifyData : (req,res) =>{
-            let body = req.body
-            model.api.modifyData(body, data =>{
-                return res.send(true)
-            })
-        },
-        deleteData : (req,res) =>{
-            let body = req.body
-            model.api.deleteData(body, data =>{
-                return res.send(true)
-            })
-        },
         sendPw : (req, res) => {
             const body = req.body;
             const hash = hashing.enc(body.id, body.password, salt)
-
             model.api.searchInfo(body, hash, result => {
                 var obj = {};
                 if(result[0]) {
@@ -67,19 +43,29 @@ AWS.config.loadFromPath(
     },
     get : {
         board : (req, res) => {
+            const body = req.body;
   
-            model.get.board(result => {
+            model.get.board(body, result => {
                 if(result) {
                     res.send(result);
                 }
             })
         },
         board_cnt : (req, res) => {
+            const body = req.body;
 
-            model.get.board_cnt(cnt => {
+            model.get.board_cnt(body, cnt => {
               const result = { cnt : cnt }
               res.send(result)
             })
-          }
+        },
+        board_data : (req, res) => {
+            const body = req.body;
+    
+            model.get.board_data(body, data => {
+              const result = { data : data }
+              res.send(result)
+            })
+        },
     },
 }
